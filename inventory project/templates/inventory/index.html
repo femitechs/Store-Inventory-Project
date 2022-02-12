@@ -1,0 +1,57 @@
+{% extends "inventory/base.html" %}
+{%  load static %}
+
+{% block title %} {% endblock %}
+
+{% block static %}
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="shortcut icon" href="{% static 'icon/edit.png' %}">
+{% endblock %}
+
+{% block content %}
+<div id="body">
+    
+    <div class="restrict">
+        <div class="table-container">
+            <div class="table-wrapper">
+                <div class="table-general">
+                    <h2> All {{ request.user.first_name }} Equipment </h2>
+                    <table style="border-collapse: collapse;"><!--Collapse prevents chrome from overriding css-->
+                        <thead>
+                            <tr class="invent-row">
+                                <th class="column1">Sequence</th> 
+                                <th class="column2">Equipment Name</th> 
+                                <th class="column3">Serial Number</th> 
+                                <th class="column4">Tag Number</th> 
+                                <th class="column5">Status</th> 
+                                <th class="column6">Date Added</th> 
+                                <th class="column7">Date Modified</th>
+                            </tr>
+                        </thead>
+
+                        {% for invent in invents %}
+                            <tbody>
+                                <tr class="rowinvent2 {% cycle '' 'altrow' %}">
+                                    <td class="column1"> <a href="{{ invent.get_absolute_url }}"> {{invent.seq_number}} <img src="{% static 'icon/edit2.gif' %}" alt="" class="image"> </a> </td>
+                                    <!--<td> {{invent.id}} </td> -->
+                                    <td class="column2"> {{invent.equipment_name}} </td>
+                                    <td class="column3"> {{invent.serial_number}} </td>
+                                    <td class="column4" id="tag"> {{invent.tag_number | default:"--"}} </td>
+                                    <td class="column5"> {{invent.status}} </td>
+                                    <td class="column6"> {{invent.date_added | date:"d-m-y"}} </td>
+                                    <td class="column7"> {{invent.date_modified | date:"d-m-y" | default:"Pending"}} </td>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                    
+                    <p id="nav-trial">
+                        <a href="{% url 'create' %}"> <button> Add new equipment here </button> </a>
+                    </p>
+                </div>   
+            </div>
+        </div>
+    </div> 
+</div>
+{% endblock %}
+            

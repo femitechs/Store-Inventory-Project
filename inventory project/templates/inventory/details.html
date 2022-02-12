@@ -1,0 +1,74 @@
+{% extends "inventory/base.html" %}
+
+{% load static %}
+
+{% block title %}All Inventories{% endblock title %}
+
+{% block static %}
+        <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div id="body">
+    
+    <div class="restrict">
+        <div class="table-container">
+            <div class="table-wrapper">
+                <div class="table-general">
+
+                    <h2> Inventory Detail </h2>
+
+                    <table><!--Collapse prevents chrome from overriding css-->
+                        <div class="row-control">
+                        <tr>
+                           <td class="column1-control" id="td1">Nos:</td>
+                           <td class="column2-control">{{ invent.seq_number }}</td>
+                        </tr>
+                        <tr>
+                           <td class="column1-control" id="td2">ID:</td>
+                           <td class="column2-control">{{ invent.id }}</td>
+                        </tr>
+                        <tr>
+                           <td class="column1-control">Equipment Name:</td>
+                           <td class="column2-control">{{ invent.equipment_name }}</td>
+                        </tr>
+                        <tr>
+                           <td class="column1-control">Serial Number:</td>
+                           <td class="column2-control">{{ invent.serial_number }}</td>
+                        </tr>
+                        <tr>
+                           <td class="column1-control">Tag Number:</td>
+                           <td class="column2-control">{{ invent.tag_number }}</td>
+                        </tr>
+                        <tr>
+                           <td class="column1-control">Status:</td>
+                           <td class="column2-control">{{ invent.status }}</td>
+                        </tr>
+                        <tr>
+                           <td class="column1-control">Date Added:</td>
+                           <td class="column2-control">{{ invent.date_added | date:"d-m-y" }}</td>
+                        </tr>
+                        <tr>
+                           <td class="column1-control">Date Modified:</td>
+                           <td class="column2-control">{{ invent.date_modified | date:"d-m-y" | default:"Pending" }}</td>
+                        </tr>
+                        </div>
+                    </table>
+                    
+                    <p id="lastcard">
+                       <button id="button1">
+                           <a href="{% url 'index' %}">Back to Equipment List</a> 
+                       </button>
+                       <button id="button2">
+                           <a href="{% url 'update' invent.slug %}"> Edit Selected Inventory </a>
+                       </button>
+                    </p>
+                    
+                </div>   
+            </div>
+        </div>
+    </div> 
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "inventory/base.html" %}
+
+{% load static %}
+
+{% block title %} {% endblock %}
+
+{% block static %}
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="body">
+
+        <div class="login-form">
+
+            <h2> Log in </h2>
+
+            {% if form.errors %}
+                <p>
+                     <h4 id="err">Your username and password did not match. Please try again </h4>
+                </p>
+            {% else %}
+                <p> 
+                    <h4 id="err2">Use the following form to log in </h4>
+                </p> 
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="user-pass">
+                    <label for="user">Username</label>                
+                    {{ form.username }}
+                </div>
+                <div class="user-pass">
+                    <label for="pass">Password</label>
+                    {{ form.password }}
+                </div>
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <p id="butt"> <button> Log in </button> </p>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

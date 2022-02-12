@@ -1,0 +1,32 @@
+{% extends 'inventory/base.html' %}
+{%  load static %}
+
+{% block title %} {% endblock %}
+
+{% block static %}
+        <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+    
+    {% block content %}
+
+        <div class="body">
+    
+
+            <form method="POST" action="">
+
+                <div class="intro"> 
+                    New inventory 
+                </div>
+                
+                    {% csrf_token %}
+
+                        <div class="container in2"> 
+                            {{ form.as_p }} 
+                        </div>
+                        
+                        <button> Submit </button>
+            </form>
+
+        </div>
+
+    {% endblock content %}
