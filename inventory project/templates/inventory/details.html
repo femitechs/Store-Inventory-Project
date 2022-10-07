@@ -4,9 +4,7 @@
 
 {% block title %}All Inventories{% endblock title %}
 
-{% block static %}
-        <link rel="stylesheet" href="{% static 'css/detail.css' %}">
-{% endblock %}
+
 
 {% block content %}
 
@@ -14,20 +12,16 @@
     
     <div class="restrict">
         <div class="table-container">
-            <div class="table-wrapper">
+            <div class="table-wrapper-detail">
                 <div class="table-general">
 
                     <h2> Inventory Detail </h2>
 
-                    <table><!--Collapse prevents chrome from overriding css-->
+                    <table class="table-detail"><!--Collapse prevents chrome from overriding css-->
                         <div class="row-control">
                         <tr>
                            <td class="column1-control" id="td1">Nos:</td>
                            <td class="column2-control">{{ invent.seq_number }}</td>
-                        </tr>
-                        <tr>
-                           <td class="column1-control" id="td2">ID:</td>
-                           <td class="column2-control">{{ invent.id }}</td>
                         </tr>
                         <tr>
                            <td class="column1-control">Equipment Name:</td>

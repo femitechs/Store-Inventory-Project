@@ -2,3 +2,5 @@
 db.sqlite3
 pipfile
 pipfile.lock
+bfg-1.14.0.jar
+.git.bfg-report

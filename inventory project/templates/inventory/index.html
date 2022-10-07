@@ -3,11 +3,6 @@
 
 {% block title %} {% endblock %}
 
-{% block static %}
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
-        <link rel="shortcut icon" href="{% static 'icon/edit.png' %}">
-{% endblock %}
-
 {% block content %}
 <div id="body">
     
@@ -33,7 +28,6 @@
                             <tbody>
                                 <tr class="rowinvent2 {% cycle '' 'altrow' %}">
                                     <td class="column1"> <a href="{{ invent.get_absolute_url }}"> {{invent.seq_number}} <img src="{% static 'icon/edit2.gif' %}" alt="" class="image"> </a> </td>
-                                    <!--<td> {{invent.id}} </td> -->
                                     <td class="column2"> {{invent.equipment_name}} </td>
                                     <td class="column3"> {{invent.serial_number}} </td>
                                     <td class="column4" id="tag"> {{invent.tag_number | default:"--"}} </td>
